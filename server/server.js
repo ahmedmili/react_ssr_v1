@@ -5,7 +5,8 @@ import { StaticRouter } from "react-router-dom/server";
 import App from "../src/App";
 
 const app = express();
-
+const envPort = process.env.PORT
+const PORT = envPort || 3002;
 app.get("/*", (req, res) => {
   const entryPoint = ["/main.js"];
 
@@ -29,5 +30,6 @@ app.get("/*", (req, res) => {
 });
 
 app.listen(3002, () => {
-  console.log("App is running on http://localhost:3002");
+  console.log("envPort === ",envPort)
+  console.log("App is running on http://localhost:",PORT);
 });
